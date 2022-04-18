@@ -8,6 +8,10 @@ from app.config import PG_URL
 SQLALCHEMY_DATABASE_URL = PG_URL
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = Session()
 
 Base = declarative_base()
+
+
+def connect_db():
+    session = Session(bind=engine)
+    return session
