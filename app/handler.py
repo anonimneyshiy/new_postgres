@@ -10,17 +10,16 @@ from app.schemas import PostCreate
 router = APIRouter()
 
 
-@router.get("/get/")
+@router.get("/get_post/")
 def post_list(database: Session = Depends(connect_db)) -> dict:
     posts = get_post(database=database)
     return {'posts': posts}
 
 
-@router.post("/add/")
-def add_post(item: PostCreate, database: Session = Depends(connect_db)) -> str:
-    add_post(
+@router.post("/create_post/")
+def create_post(item: PostCreate, database: Session = Depends(connect_db)) -> str:
+    current_post = add_post(
         database=database,
         item=item
     )
-
-    return "good add post!"
+    return current_post

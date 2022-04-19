@@ -13,7 +13,7 @@ def get_post(database: Session) -> list:
 def add_post(
     database: Session,
     item: PostCreate
-) -> None:
+) -> Post:
     post = Post(
         id=1,
         **item.dict()
